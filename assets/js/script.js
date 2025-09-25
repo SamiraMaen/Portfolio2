@@ -174,7 +174,7 @@ form.addEventListener("submit", async function (e) {
     });
 
     if (response.ok) {
-      formBtn.innerHTML = 'Sent ✅'; // 
+      formBtn.innerHTML = 'Sent'; // 
       form.reset(); // 
     } else {
       formBtn.innerHTML = 'Error ❌';
