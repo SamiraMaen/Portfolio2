@@ -186,3 +186,18 @@ form.addEventListener("submit", async function (e) {
     formBtn.disabled = false;
   }
 });
+
+const projectLinks = document.querySelectorAll(".project-item a");
+
+projectLinks.forEach(link => {
+  const href = link.getAttribute("href");
+
+  if (href && href !== "#") {
+    link.setAttribute("target", "_blank");
+  } else {
+    link.classList.add("coming-soon");
+    link.setAttribute("data-tooltip", "Coming Soon");
+    link.addEventListener("click", (e) => e.preventDefault());
+  }
+});
+
