@@ -157,3 +157,32 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// contact form submission without redirect
+form.addEventListener("submit", async function (e) {
+  e.preventDefault(); // يمنع إعادة تحميل الصفحة
+
+  const formData = new FormData(form);
+  formBtn.disabled = true;
+  formBtn.innerHTML = 'Sending... ⏳';
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      formBtn.innerHTML = 'Sent ✅'; // 
+      form.reset(); // 
+    } else {
+      formBtn.innerHTML = 'Error ❌';
+      formBtn.disabled = false;
+    }
+  } catch (error) {
+    console.error(error);
+    formBtn.innerHTML = 'Error ❌';
+    formBtn.disabled = false;
+  }
+});
